@@ -1,0 +1,246 @@
+<aiml version= "2.0">
+
+    <category>
+        <pattern>HELLO</pattern>
+        <template>
+            <random>
+                <li>Hello, who are you?</li>
+                <li>Hi, who are you?</li>
+                <li>Hello human, what is your name?</li>
+                <li>Greetings :). Can you introduce yourself?</li>
+                <li>Hey! wassup?</li>
+                <li>Hello... Nice to meet you. What is your name?</li>
+                <li>Can you tell me your name by saying "My name is "</li>
+            </random>
+        </template>
+    </category>
+    <category>
+        <pattern>HI</pattern>
+        <template>
+        <srai>HELLO</srai>
+        </template>
+    </category>
+
+        <category>
+        <pattern>HI *</pattern>
+        <template>
+        <srai>HELLO</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>HELLO *</pattern>
+        <template>
+        <srai>HELLO</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>I AM * </pattern>
+        <template>
+        <think><set name="username"><star/></set></think>
+        Nice to know you <get name="username"/>
+        </template>
+    </category>
+
+        <category>
+        <pattern>MY NAME IS * </pattern>
+        <template>
+        <think><set name="username"><star/></set></think>
+        Nice to know you <get name="username"/>
+        </template>
+    </category>
+
+        <category>
+        <pattern>MY FRIEND IS * </pattern>
+        <template>
+        <think><set name="relation_name"><star/></set></think>
+        Happy to know that <get name="relation_name"></get>  is your friend.
+        </template>
+    </category>
+  <category>
+        <pattern> * </pattern>
+        <template>
+        No response
+        </template>
+    </category>
+    <category>
+      <pattern>BYE</pattern>
+      <template>
+            <random>
+                <li>bye</li>
+                <li>It was nice talking to you</li>
+                <li>tata!!</li>
+                <li>Let's talk again tomorrow :) </li>
+                <li>I hope that you had a great time.</li>
+                <li>bye take care</li>
+            </random>
+        </template>
+    </category>
+
+    <category>
+      <pattern>GOOD BYE *</pattern>
+      <template>
+         <srai>BYE</srai>
+      </template>
+    </category>
+
+    <category>
+      <pattern>GOOD BYE</pattern>
+      <template>
+         <srai>BYE</srai>
+      </template>
+    </category>
+
+    <category>
+      <pattern>GOODBYE *</pattern>
+      <template>
+         <srai>BYE</srai>
+      </template>
+    </category>
+
+    <category>
+        <pattern>YES</pattern>
+        <template>
+            <random>
+            <li>so?</li>
+            <li>:)</li>
+            <li>and?</li>
+            <li>uh huh..</li>
+            <li>ummm....</li>
+            <li>hmmm....</li>
+            </random>
+        </template>
+    </category>
+
+    <category>
+      <pattern>OK</pattern>
+      <template>
+         <srai>YES</srai>
+      </template>
+    </category>
+
+    <category>
+      <pattern>OKAY</pattern>
+      <template>
+         <srai>YES</srai>
+      </template>
+    </category>
+
+    <category>
+      <pattern>HOW ARE YOU</pattern>
+      <template>
+            <random>
+                <li>I'am doing good. What about you?</li>
+                <li>I'am fine. What about you?</li>
+                <li>So yo asking how I am? Well am fine.... What about you?</li>
+                <li>I'm fine. What about you?</li>
+                <li>I'm okay. What about you?</li>
+            </random>
+        </template>
+    </category>
+    <category>
+      <pattern>oh</pattern>
+      <template>
+         <srai>YES</srai>
+      </template>
+    </category>
+
+    <category>
+      <pattern>DO YOU HAVE FRIENDS</pattern>
+      <template>
+         Yes I have a friend named Kuki, do you have friends?
+      </template>
+    </category>
+
+   <category>
+      <pattern>DO YOU KNOW ME</pattern>
+      <template>
+         Yes ofcourse, you are <get name = "username"></get>.
+      </template>
+    </category>
+
+       <category>
+      <pattern>DO YOU KNOW MY FRIEND</pattern>
+      <template>
+         Yes ofcourse, they are <get name = "relation_name"></get>.
+      </template>
+    </category>
+    <category>
+      <pattern>YES</pattern>
+      <that>YES I HAVE A FRIEND NAMED KUKI DO YOU HAVE FRIENDS</that>
+      <template>
+         That's really great. I wished I could have more friends.
+      </template>
+    </category>
+
+    <category>
+      <pattern>NO</pattern>
+      <that>YES I HAVE A FRIEND NAMED KUKI DO YOU HAVE FRIENDS</that>
+      <template>
+         Don't worry. I am here for you <get name = "username"></get>
+      </template>
+    </category>
+
+    <category>
+      <pattern>WASSUP</pattern>
+      <template>
+         <srai>HOW ARE YOU</srai>
+      </template>
+    </category>
+
+    <category>
+      <pattern>HOW ARE YOU DOING?</pattern>
+      <template>
+         <srai>HOW ARE YOU</srai>
+      </template>
+    </category>
+
+    <category>
+      <pattern>HOW ARE YOU DOING *</pattern>
+      <template>
+         <srai>HOW ARE YOU</srai>
+      </template>
+    </category>
+
+    <category>
+      <pattern>WHAT ABOUT YOU*</pattern>
+      <template>
+         <srai>HOW ARE YOU</srai>
+      </template>
+    </category>
+
+    <category>
+      <pattern>WBU*</pattern>
+      <template>
+         <srai>HOW ARE YOU</srai>
+      </template>
+    </category>
+
+
+
+  <category>
+        <pattern>WHO ARE YOU </pattern>
+        <template>
+            <random>
+                <li> I am a personalised bot!</li>
+                <li> I AM A BOT!! Ask me anything.</li>
+                <li> I am your own full stack bot!</li>
+            </random>
+        </template>
+    </category>
+
+  <category>
+        <pattern>WHAT ARE YOU</pattern>
+        <template>
+        <srai>WHO ARE YOU</srai>
+        </template>
+    </category>
+
+
+  <category>
+        <pattern> DO YOU KNOW ME</pattern>
+        <template>
+        Yes , I know you, you are <get name="username"></get>
+        </template>
+    </category>
+
+</aiml>
