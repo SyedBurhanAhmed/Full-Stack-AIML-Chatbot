@@ -10,12 +10,19 @@
                 <li>Greetings :). Can you introduce yourself?</li>
                 <li>Hey! wassup?</li>
                 <li>Hello... Nice to meet you. What is your name?</li>
-                <li>Can you tell me your name by saying "My name is "</li>
+                <li>Hey! Glad to to talk with you. What's your name?</li>
             </random>
         </template>
     </category>
     <category>
         <pattern>HI</pattern>
+        <template>
+        <srai>HELLO</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>HEY</pattern>
         <template>
         <srai>HELLO</srai>
         </template>
@@ -27,17 +34,40 @@
         <srai>HELLO</srai>
         </template>
     </category>
+
+
     <category>
         <pattern>HELLO *</pattern>
         <template>
         <srai>HELLO</srai>
         </template>
     </category>
+
+
     <category>
-        <pattern>I AM * </pattern>
+        <pattern>WHAT IS YOUR NAME</pattern>
         <template>
-        <think><set name="username"><star/></set></think>
-        Nice to know you <get name="username"/>
+        <srai>WHO ARE YOU</srai>
+        </template>
+    </category>
+
+
+    <category>
+        <pattern>I AM *</pattern>
+        <template>
+            <think><set name="mood"><star/></set></think>
+            <condition name="sentiment">
+                <li value="positive">
+                    Happy to know. You are in a great mood.
+                </li>
+                <li value="negative">
+                    Do not be negative. Here is a joke to lighten your mood.<br/>
+                    <srai>TELL ME A JOKE</srai>
+                </li>
+                <li value="">
+                    Good to know you <get name="username"></get>.
+                </li>
+            </condition>
         </template>
     </category>
 
@@ -45,7 +75,7 @@
         <pattern>MY NAME IS * </pattern>
         <template>
         <think><set name="username"><star/></set></think>
-        Nice to know you <get name="username"/>
+        Nice to know you <get name="username"/>.
         </template>
     </category>
 
@@ -56,22 +86,49 @@
         Happy to know that <get name="relation_name"></get>  is your friend.
         </template>
     </category>
+
+
+
+
+      <category>
+      <pattern>WHAT IS * *</pattern>
+      <template>
+         <think><set name ="word"><star index="2"/></set></think>
+        <get name ="word"></get> : <get name ="description"></get>.
+      </template>
+    </category>
+
+      <category>
+      <pattern>WHAT IS *</pattern>
+      <template>
+         <think><set name ="word"><star/></set></think>
+         <get name ="word"></get> : <get name ="description"></get>.
+      </template>
+    </category>
+
+    <category>
+      <pattern>WHO IS *</pattern>
+      <template>
+         <think><set name ="word"><star/></set></think>
+        <get name ="word"></get> is <get name ="description"></get>.
+      </template>
+    </category>
   <category>
         <pattern> * </pattern>
         <template>
-        No response
+        Ask anything else please?
         </template>
     </category>
     <category>
       <pattern>BYE</pattern>
       <template>
             <random>
-                <li>bye</li>
-                <li>It was nice talking to you</li>
+                <li>Bye.</li>
+                <li>It was nice talking to you.</li>
                 <li>tata!!</li>
                 <li>Let's talk again tomorrow :) </li>
                 <li>I hope that you had a great time.</li>
-                <li>bye take care</li>
+                <li>Bye, take care.</li>
             </random>
         </template>
     </category>
@@ -176,7 +233,7 @@
       <pattern>NO</pattern>
       <that>YES I HAVE A FRIEND NAMED KUKI DO YOU HAVE FRIENDS</that>
       <template>
-         Don't worry. I am here for you <get name = "username"></get>
+         Don't worry. I am here for you <get name = "username"></get>.
       </template>
     </category>
 
@@ -221,9 +278,9 @@
         <pattern>WHO ARE YOU </pattern>
         <template>
             <random>
-                <li> I am a personalised bot!</li>
+                <li> I am a personalised bot! Ask away!</li>
                 <li> I AM A BOT!! Ask me anything.</li>
-                <li> I am your own full stack bot!</li>
+                <li> I am your own full stack bot! Ask anything!</li>
             </random>
         </template>
     </category>
@@ -239,7 +296,7 @@
   <category>
         <pattern> DO YOU KNOW ME</pattern>
         <template>
-        Yes , I know you, you are <get name="username"></get>
+        Yes , I know you, you are <get name="username"></get>.
         </template>
     </category>
 
