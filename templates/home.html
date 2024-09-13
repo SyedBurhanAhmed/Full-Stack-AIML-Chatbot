@@ -7,11 +7,14 @@
 <!DOCTYPE html><html class=''>
 <head><script src='//production-assets.codepen.io/assets/editor/live/console_runner-079c09a0e3b9ff743e39ee2d5637b9216b3545af0de366d4b9aad9dc87e26bfd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/events_runner-73716630c22bbc8cff4bd0f07b135f00a0bdc5d14629260c3ec49e5606f98fdd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js'></script><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" /><link rel="mask-icon" type="" href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" /><link rel="canonical" href="https://codepen.io/emilcarlsson/pen/ZOQZaV?limit=all&page=74&q=contact+" />
 <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,300' rel='stylesheet' type='text/css'>
+
 <link rel = 'icon' type ='image/x-icon' href = 'https://miro.medium.com/v2/resize:fit:327/1*paQ7E6f2VyTKXHpR-aViFg.png'></link>
 <script src="https://use.typekit.net/hoy3lrg.js"></script><link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script>try{Typekit.load({ async: true });}catch(e){}</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Burhan's Bot</title>
 <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'><link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css'>
 <style class="cp-pen-styles">body {
@@ -464,17 +467,20 @@
   width: 100%;
   bottom: 0;
 }
+
 #frame #sidepanel #bottom-bar button {
   float: left;
   border: none;
   width: 50%;
   padding: 10px 0;
-  background: #5e2f62;
-  color: #f5f5f5;
+  background: #3b0a45; /* Darker background color */
+  color: #f5f5f5; /* Light text color */
   cursor: pointer;
-  font-size: 0.85em;
-  font-family: "proxima-nova",  "Source Sans Pro", sans-serif;
+  font-size: 1em; /* Adjusted font size */
+  font-family: "proxima-nova", "Source Sans Pro", sans-serif;
+  font-weight: bold; /* Make text bold */
 }
+
 @media screen and (max-width: 735px) {
   #frame #sidepanel #bottom-bar button {
     float: none;
@@ -482,35 +488,42 @@
     padding: 15px 0;
   }
 }
+
 #frame #sidepanel #bottom-bar button:focus {
   outline: none;
 }
+
 #frame #sidepanel #bottom-bar button:nth-child(1) {
   border-right: 1px solid #5e2f62;
 }
+
 @media screen and (max-width: 735px) {
   #frame #sidepanel #bottom-bar button:nth-child(1) {
     border-right: none;
     border-bottom: 1px solid #5e2f62;
   }
 }
+
 #frame #sidepanel #bottom-bar button:hover {
-  background: #6c1f55;
+  background: #2a0826; /* Darker background color on hover */
 }
+
 #frame #sidepanel #bottom-bar button i {
-  margin-right: 3px;
-  font-size: 1em;
+  display: none; /* Hide icons if not needed */
 }
+
 @media screen and (max-width: 735px) {
   #frame #sidepanel #bottom-bar button i {
     font-size: 1.3em;
   }
 }
+
 @media screen and (max-width: 735px) {
   #frame #sidepanel #bottom-bar button span {
     display: none;
   }
 }
+
 #frame .content {
   float: right;
   width: 60%;
@@ -705,12 +718,14 @@ Website: http://emilcarlsson.se/
       <div class="wrap">
         <img id="profile-img" src="https://avatars.githubusercontent.com/u/135728171?v=4" class="online" alt="" />
         <p>Syed Burhan Ahmed</p>
+<!--        {% if username %}-->
+<!--        <p>Welcome, {{ username }}</p>-->
+<!--        <a href="/logout">Log Out</a>-->
+<!--        {% else %}-->
+<!--          <p>Please log in.</p>-->
+<!--        {% endif %}-->
 
       </div>
-    </div>
-    <div id="search">
-      <label for=""><i class="fa fa-search" aria-hidden="true"></i></label>
-      <input type="text" placeholder="Search contacts..." />
     </div>
     <div id="contacts">
       <ul>
@@ -719,7 +734,7 @@ Website: http://emilcarlsson.se/
             <span class="contact-status online"></span>
             <img src="https://miro.medium.com/max/327/1*paQ7E6f2VyTKXHpR-aViFg.png" alt="" />
             <div class="meta">
-              <p class="name">AIML Bot</p>
+              <p class="name">Full Stack AIML Bot</p>
               <p class="preview">Assistant Bot</p>
             </div>
           </div>
@@ -727,15 +742,15 @@ Website: http://emilcarlsson.se/
       </ul>
     </div>
   <div id="bottom-bar">
-    <button id="login" onclick="window.location.href='/login'"><i class="fa fa-sign-in fa-fw" aria-hidden="true"></i> <span>Login</span></button>
-    <button id="signup" onclick="window.location.href='/signup'"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> <span>Sign Up</span></button>
+    <button id="login" onclick="window.location.href='/login'">Login</button>
+    <button id="signup" onclick="window.location.href='/signup'">Sign Up</button>
   </div>
 
   </div>
   <div class="content">
     <div class="contact-profile">
       <img src="https://miro.medium.com/max/327/1*paQ7E6f2VyTKXHpR-aViFg.png" alt="" />
-      <p>AIML BOT</p>
+      <p>Full Stack AIML Bot</p>
     </div>
     <div class="messages">
       <ul>

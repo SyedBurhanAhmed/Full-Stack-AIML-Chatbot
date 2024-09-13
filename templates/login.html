@@ -17,70 +17,127 @@
             color: #5e2f62;
             transform: scale(0.75); /* Scale the body content to 75% */
             transform-origin: center; /* Keep the content centered when scaled */
-        }
+    }
 
-        .login-box {
-            width: 400px;
-            padding: 40px;
-            background: #fff;
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+    .login-box {
+        width: 400px;
+        padding: 40px;
+        background: #fff;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-        .login-box img {
-            width: 100px;
-            height: auto;
-            margin-bottom: 20px;
-        }
+    .login-box img {
+        width: 100px;
+        height: auto;
+        margin-bottom: 20px;
+    }
 
-        .login-box input[type="email"],
-        .login-box input[type="password"],
-        .login-box button {
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0;
-            font-size: large;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background: #f9f9f9;
-            box-sizing: border-box;
-        }
+    .login-box input[type="email"],
+    .login-box input[type="password"],
+    .login-box input[type="text"],
+    .login-box button {
+        width: 100%;
+        padding: 15px;
+        margin: 10px 0;
+        font-size: large;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background: #f9f9f9;
+        box-sizing: border-box;
+    }
 
-        .login-box input[type="email"]:focus,
-        .login-box input[type="password"]:focus {
-            border-color: #6c1f55;
-            box-shadow: 0 0 5px rgba(150, 79, 162, 0.5);
-            outline: none;
-        }
+    .login-box input[type="email"]:focus,
+    .login-box input[type="password"]:focus
+    .login-box input[type="text"]:focus {
+        border-color: #6c1f55;
+        box-shadow: 0 0 5px rgba(150, 79, 162, 0.5);
+        outline: none;
+    }
 
-        .login-box button {
-            background: #5e2f62;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
+    .login-box button {
+        background: #5e2f62;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
 
-        .login-box button:hover {
-            background: #6c1f55;
-        }
+    .login-box button:hover {
+        background: #6c1f55;
+    }
 
-        .login-box a {
-            display: block;
-            margin-top: 15px;
-            color: #964FA2;
-            text-decoration: none;
-        }
-        .login-box p {
-            display: inline-block;
-            color: black;
-            margin-right: 5px; /* Add space between the text and the link */
-        }
+    .login-box a {
+        display: block;
+        margin-top: 15px;
+        color: #964FA2;
+        text-decoration: none;
+    }
 
-        .login-box .signup-link {
-            display: inline-block;
-            color:#5e2f62;
-        }
+    .login-box p {
+        display: inline-block;
+        color: black;
+        margin-right: 5px; /* Add space between the text and the link */
+    }
+
+    .login-box .signup-link {
+        display: inline-block;
+        color: #5e2f62;
+    }
+
+    /* Style for the Show Password checkbox */
+    .show-password-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin: 10px 0;
+    }
+
+    .show-password-wrapper input[type="checkbox"] {
+        transform: scale(1.5); /* Increase the size of the checkbox */
+        margin-right: 10px;
+    }
+
+    .show-password-wrapper label {
+        font-size: large; /* Increase the font size of the label */
+        color: #5e2f62; /* Match the color with the rest of the form */
+    }
+    /* General styling for messages */
+.message {
+    font-size: 1em;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Error message styling */
+.error {
+    background-color: #f8d7da; /* Light red background */
+    color: #721c24; /* Dark red text */
+    border: 1px solid #f5c6cb; /* Light red border */
+}
+
+/* Success message styling */
+.notification {
+    background-color: #d4edda; /* Light green background */
+    color: #155724; /* Dark green text */
+    border: 1px solid #c3e6cb; /* Light green border */
+}
+
+/* Ensure error and notification messages look consistent */
+.error, .notification {
+    font-size: 1em; /* Consistent font size */
+    padding: 10px; /* Space inside the box */
+    border-radius: 5px; /* Rounded corners */
+    margin: 10px 0; /* Space around the box */
+    text-align: center; /* Center the text */
+    width: 100%; /* Full width */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
     </style>
 </head>
 <body>
@@ -89,13 +146,33 @@
         <h2>Login</h2>
         <form action="/login" method="POST">
             <input type="email" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Password" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <!-- Checkbox for show password -->
+            <div class="show-password-wrapper">
+                <input type="checkbox" id="show-password-login" onclick="togglePassword()">
+                <label for="show-password-login">Show Password</label>
+            </div>
             <button type="submit">Log In</button>
         </form>
-<!--        <button class="google-btn">-->
-<!--            <i class="fa fa-google"></i> Sign in with Google-->
-<!--        </button>-->
+
+        {% if request.args.get('success') == 'login' %}
+        <p class="notification">Login successful! Redirecting...</p>
+        {% elif request.args.get('error') == 'invalid' %}
+        <p class="error">Invalid email or password. Please try again or sign up.</p>
+        {% endif %}
+
         <p>Don't have an account?</p><a class="signup-link" href="/signup">Sign up</a>
     </div>
+
+    <script>
+        function togglePassword() {
+            var passwordField = document.getElementById("password");
+            if (passwordField.type === "password") {
+                passwordField.type = "text";  // Show password
+            } else {
+                passwordField.type = "password";  // Hide password
+            }
+        }
+    </script>
 </body>
 </html>
