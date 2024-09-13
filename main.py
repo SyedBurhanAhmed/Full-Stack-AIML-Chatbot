@@ -5,7 +5,7 @@ from nltk.corpus import wordnet as wn
 from nltk import pos_tag, ne_chunk
 from nltk.tree import Tree
 from nltk.sentiment import SentimentIntensityAnalyzer
-from py2neo import Graph, Node, Relationship
+from py2neo import Graph
 import hashlib
 import re
 import dns.resolver

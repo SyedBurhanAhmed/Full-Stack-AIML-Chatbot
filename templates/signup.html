@@ -161,7 +161,7 @@
         {% if request.args.get('error') == 'invalid_email' %}
         <p class="error">Invalid email format. Please enter a valid email.</p>
         {% elif request.args.get('error') == 'email_exists' %}
-        <p class="error">Email already exists. Please Login.</p>
+        <p class="error">Email already exists. Please Log in.</p>
         {% elif request.args.get('success') == 'signup' %}
         <p class="notification">Sign up successful! Redirecting to Login Page.</p>
         {% endif %}
