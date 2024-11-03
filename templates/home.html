@@ -7,6 +7,7 @@
 <!DOCTYPE html><html class=''>
 <head><script src='//production-assets.codepen.io/assets/editor/live/console_runner-079c09a0e3b9ff743e39ee2d5637b9216b3545af0de366d4b9aad9dc87e26bfd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/events_runner-73716630c22bbc8cff4bd0f07b135f00a0bdc5d14629260c3ec49e5606f98fdd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js'></script><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" /><link rel="mask-icon" type="" href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" /><link rel="canonical" href="https://codepen.io/emilcarlsson/pen/ZOQZaV?limit=all&page=74&q=contact+" />
 <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <link rel = 'icon' type ='image/x-icon' href = 'https://miro.medium.com/v2/resize:fit:327/1*paQ7E6f2VyTKXHpR-aViFg.png'></link>
 <script src="https://use.typekit.net/hoy3lrg.js"></script><link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -658,34 +659,47 @@
 #frame .content .message-input .wrap input:focus {
   outline: none;
 }
-#frame .content .message-input .wrap .attachment {
-  position: absolute;
-  right: 60px;
-  z-index: 4;
-  margin-top: 10px;
-  font-size: 1.1em;
-  color: #435f7a;
-  opacity: .5;
-  cursor: pointer;
+
+/* Microphone button styling */
+#frame .content .message-input .wrap .mic {
+    position: absolute;
+    right: 65px; /* Adjust to position between the input and submit button */
+    z-index: 4;
+    margin-top: 10px; /* Align vertically with other icons */
+    font-size: 1.1em;
+    color: #5e2f62; /* Change color to purple */
+    cursor: pointer;
 }
+
 @media screen and (max-width: 735px) {
-  #frame .content .message-input .wrap .attachment {
-    margin-top: 17px;
-    right: 65px;
-  }
+    #frame .content .message-input .wrap .mic {
+        margin-top: 17px;
+        right: 115px; /* Adjust for smaller screens */
+    }
 }
-#frame .content .message-input .wrap .attachment:hover {
-  opacity: 1;
+
+/* Change color and add animation when listening */
+.mic.listening {
+    color: red;
+    animation: pulse 1s infinite;
 }
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
 #frame .content .message-input .wrap button {
-  float: right;
-  border: none;
-  width: 50px;
-  padding: 12px 0;
-  cursor: pointer;
-  background: #5e2f62;
-  color: #f5f5f5;
+    float: right;
+    border: none;
+    width: 50px;
+    padding: 12px 0;
+    cursor: pointer;
+    background: #5e2f62;
+    color: #f5f5f5;
 }
+
 @media screen and (max-width: 735px) {
   #frame .content .message-input .wrap button {
     padding: 16px 0;
@@ -697,6 +711,27 @@
 #frame .content .message-input .wrap button:focus {
   outline: none;
 }
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+
+.speaker-btn {
+    background: transparent; /* Makes the button background transparent */
+    border: none;           /* Removes border */
+    cursor: pointer;        /* Changes the cursor to a pointer */
+}
+
+.speaker-btn svg, .speaker-btn i {
+    color: rgba(128, 0, 128, 1); /* Sets the icon color to purple */
+    width: 24px; /* Adjust size as needed */
+    height: 24px; /* Adjust size as needed */
+}
+
+
 </style></head><body>
 <!--
 
@@ -718,7 +753,7 @@ Website: http://emilcarlsson.se/
       <div class="wrap">
         <img id="profile-img" src="https://avatars.githubusercontent.com/u/135728171?v=4" class="online" alt="" />
         <p>Syed Burhan Ahmed</p>
-        {% if username %}
+<!--        {% if username %}-->
 <!--        <p>Welcome, {{ username }}</p>-->
 <!--        <a href="/logout">Log Out</a>-->
 <!--        {% else %}-->
@@ -762,100 +797,284 @@ Website: http://emilcarlsson.se/
         <li class="sent">
           <img src="https://miro.medium.com/max/327/1*paQ7E6f2VyTKXHpR-aViFg.png" alt="" />
           <p>Hello I am your own chatbot created by Burhan.</p>
+          <button class="speaker-btn" onclick="speak('Hello I am your own chatbot created by Burhan.')">
+        <i class="fas fa-volume-up"></i>
+      </button>
         </li>
       </ul>
     </div>
     <div class="message-input">
-      <div class="wrap">
-          <div id="userInput">
-              <input id="textInput" type="text" name="msg" placeholder="Write your message..." />
-              <i class="fa fa-paperclip attachment" aria-hidden="true"></i>
-              <button class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-          </div>
-      </div>
+    <div class="wrap">
+        <input id="textInput" type="text" name="msg" placeholder="Write your message..." />
+        <button class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+        <i class="fa fa-microphone mic" onclick="startSpeechRecognition()" aria-hidden="true"></i>
     </div>
-  </div>
+</div>
+
+</div>
 </div>
 <script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script><script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
-<script >
-$(".messages").animate({ scrollTop: $(document).height() }, "fast");
+<!--// script >-->
+<!--//   function startSpeechRecognition() {-->
+<!--//     const inputBox = document.getElementById("textInput");-->
+<!--//     const micIcon = document.querySelector(".fa-microphone");-->
+<!--//-->
+<!--//     // Update the placeholder and microphone icon-->
+<!--//     inputBox.placeholder = "Listening...";-->
+<!--//     micIcon.classList.add("listening");-->
+<!--//-->
+<!--//     // Fetch the speech recognition result from the server-->
+<!--//     fetch("/get")-->
+<!--//         .then(response => response.text())-->
+<!--//         .then(data => {-->
+<!--//             if (data.query) {-->
+<!--//                 inputBox.placeholder = "Write your message...";-->
+<!--//                 document.getElementById("textInput").value = data.query;-->
+<!--//                 console.log("Speech recognized:", data.query); // Log for debugging-->
+<!--//-->
+<!--//                 // Optionally, send the recognized message automatically-->
+<!--//                 newMessage();-->
+<!--//             } else if (data.error) {-->
+<!--//                 inputBox.placeholder = "Write your message...";-->
+<!--//                 console.error("Speech recognition error:", data.error); // Log error for debugging-->
+<!--//                 alert("Could not understand speech, please try again.");-->
+<!--//             } else {-->
+<!--//                 console.warn("Unexpected response format from server"); // Log unexpected response-->
+<!--//                 alert("An unexpected error occurred. Please try again.");-->
+<!--//             }-->
+<!--//         })-->
+<!--//         // .catch(error => {-->
+<!--//         //     console.error("Network error:", error); // Log network error-->
+<!--//         //     alert("Network error. Please check your connection and try again.");-->
+<!--//         // })-->
+<!--//         .finally(() => {-->
+<!--//             micIcon.classList.remove("listening");-->
+<!--//             inputBox.placeholder = "Write your message...";-->
+<!--//         });-->
+<!--// }-->
 
-$("#profile-img").click(function() {
-  $("#status-options").toggleClass("active");
-});
-
-$(".expand-button").click(function() {
-  $("#profile").toggleClass("expanded");
-  $("#contacts").toggleClass("expanded");
-});
-
-$("#status-options ul li").click(function() {
-  $("#profile-img").removeClass();
-  $("#status-online").removeClass("active");
-  $("#status-away").removeClass("active");
-  $("#status-busy").removeClass("active");
-  $("#status-offline").removeClass("active");
-  $(this).addClass("active");
-
-  if($("#status-online").hasClass("active")) {
-    $("#profile-img").addClass("online");
-  } else if ($("#status-away").hasClass("active")) {
-    $("#profile-img").addClass("away");
-  } else if ($("#status-busy").hasClass("active")) {
-    $("#profile-img").addClass("busy");
-  } else if ($("#status-offline").hasClass("active")) {
-    $("#profile-img").addClass("offline");
-  } else {
-    $("#profile-img").removeClass();
-  };
-
-  $("#status-options").removeClass("active");
-});
-
-function newMessage() {
-      message = $(".message-input input").val();
-      if($.trim(message) == '') {
-        return false;
-      }
+<!--//   function startSpeechRecognition() {-->
+<!--//     const inputBox = document.getElementById("textInput");-->
+<!--//     inputBox.placeholder = "Listening...";-->
+<!--//-->
+<!--//     fetch("/get")-->
+<!--//         .then(response => response.text())-->
+<!--//         .then(data => {-->
+<!--//             if (data !== "I couldn't understand the speech input.") {-->
+<!--//                 inputBox.placeholder = "Write your message...";-->
+<!--//                 inputBox.value = data; // Show the recognized text-->
+<!--//                 //newMessage(); // Send the recognized text as a message-->
+<!--//             } else {-->
+<!--//                 inputBox.placeholder = "Write your message...";-->
+<!--//                 alert("Could not understand speech, please try again.");-->
+<!--//             }-->
+<!--//         })-->
+<!--//         .catch(error => console.error("Speech recognition error:", error));-->
+<!--// }-->
+<!--//-->
+<!--//-->
+<!--// // Add CSS to change the microphone color when listening-->
 
 
-      $('<li class="replies"><img src="https://avatars.githubusercontent.com/u/135728171?v=4" alt="" /><p>' + message + '</p></li>').appendTo($('.messages ul'));
-      $.get("/get", { msg: message }).done(function(data) {
-        $('<li class="sent"><img src="https://miro.medium.com/max/327/1*paQ7E6f2VyTKXHpR-aViFg.png" alt="" /><p>' + data + '</p></li>').appendTo($('.messages ul'));
+<script>
+    function startSpeechRecognition() {
+    const inputBox = document.getElementById("textInput");
+    const micIcon = document.querySelector(".fa-microphone");
+
+    // Show "Listening..." and change microphone appearance
+    inputBox.placeholder = "Speak now...";
+    micIcon.classList.add("listening");
+
+    // Define msg variable to hold the user's speech
+    let msg = "";
+
+    // Fetch transcribed text from the new `/transcribe` endpoint
+    fetch("/transcribe")
+        .then(response => response.json())
+        .then(data => {
+            if (data.query) {
+                // Store recognized speech in msg variable
+                msg = data.query;
+
+                // Reset input box and show recognized speech
+                inputBox.placeholder = "Write your message...";
+                inputBox.value = msg;
+
+                // Optionally send the message automatically
+                //newMessage(msg);
+            } else {
+                inputBox.placeholder = "Write your message...";
+                alert("Could not understand speech, please try again.");
+            }
+        })
+        .catch(error => console.error("Speech recognition error:", error))
+        .finally(() => {
+            // Reset microphone icon and placeholder text
+            micIcon.classList.remove("listening");
+            inputBox.placeholder = "Write your message...";
         });
-      $('.message-input input').val(null);
-      $('.contact.active .preview').html('<span>You: </span>' + message);
-      $(".messages").animate({ scrollTop: $(document).height() }, "fast");
+}
 
-};
 
-function getBotResponse() {
-      var rawText = $("#textInput").val();
-      var userHtml = '<p class="userText"><span>' + rawText + "</span></p>";
-      $("#textInput").val("");
-      $("#chatbox").append(userHtml);
-      document
-        .getElementById("userInput")
-        .scrollIntoView({ block: "start", behavior: "smooth" });
-      $.get("/get", { msg: rawText }).done(function(data) {
-        var botHtml = '<p class="replies"><span>' + data + "</span></p>";
-        $("#chatbox").append(botHtml);
-        document
-          .getElementById("userInput")
-          .scrollIntoView({ block: "start", behavior: "smooth" });
-      });
+
+    $(".messages").animate({ scrollTop: $(document).height() }, "fast");
+
+    $("#profile-img").click(function() {
+        $("#status-options").toggleClass("active");
+    });
+
+    $(".expand-button").click(function() {
+        $("#profile").toggleClass("expanded");
+        $("#contacts").toggleClass("expanded");
+    });
+
+    $("#status-options ul li").click(function() {
+        $("#profile-img").removeClass();
+        $("#status-options ul li").removeClass("active");
+        $(this).addClass("active");
+
+        const status = $(this).attr("id");
+        if (status === "status-online") {
+            $("#profile-img").addClass("online");
+        } else if (status === "status-away") {
+            $("#profile-img").addClass("away");
+        } else if (status === "status-busy") {
+            $("#profile-img").addClass("busy");
+        } else if (status === "status-offline") {
+            $("#profile-img").addClass("offline");
+        }
+
+        $("#status-options").removeClass("active");
+    });
+
+    function newMessage(msg) {
+    if (!msg) {
+        msg = $(".message-input input").val(); // Use existing input if msg not provided
+    }
+    if ($.trim(msg) === '') {
+        return false;
     }
 
-$('.submit').click(function() {
-  newMessage();
-});
+    // Display the user's message in the chat
+    $('<li class="replies"><img src="https://avatars.githubusercontent.com/u/135728171?v=4" alt="" /><p>' + msg + '</p></li>').appendTo($('.messages ul'));
 
-$(window).on('keydown', function(e) {
-  if (e.which == 13) {
+    // Send the message to the server and display bot's response
+    $.get("/get", { msg: msg }).done(function(data) {
+        // Instead of directly appending the bot's message, call createBotMessage
+        createBotMessage(data); // Automatically includes speaker button
+    });
+
+    $('.message-input input').val(null);
+    $('.contact.active .preview').html('<span>You: </span>' + msg);
+    $(".messages").animate({ scrollTop: $(document).height() }, "fast");
+}
+
+
+    function getBotResponse() {
+        const rawText = $("#textInput").val().trim();
+        if (rawText === '') return;
+
+        const userHtml = '<p class="userText"><span>' + rawText + '</span></p>';
+        $("#textInput").val("");
+        $("#chatbox").append(userHtml);
+        document.getElementById("userInput").scrollIntoView({ block: "start", behavior: "smooth" });
+
+        $.get("/get", { msg: rawText }).done(function(data) {
+            const botHtml = '<p class="replies"><span>' + data + '</span></p>';
+            $("#chatbox").append(botHtml);
+            document.getElementById("userInput").scrollIntoView({ block: "start", behavior: "smooth" });
+        });
+    }
+
+    $('.submit').click(function() {
     newMessage();
-    return false;
-  }
-});
+    });
+
+    $(window).on('keydown', function(e) {
+        if (e.which === 13) {
+            newMessage();
+            return false;
+        }
+    });
+    // Function to send text to the Flask server for speech synthesis
+// function speak(text) {
+//     fetch('/speak', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({ text: text })
+//     })
+//     .then(response => {
+//         if (response.ok) {
+//             console.log('Speech request sent successfully');
+//         } else {
+//             console.error('Error in speech request');
+//         }
+//     })
+//     .catch(error => {
+//         console.error('Error:', error);
+//     });
+// }
+
+// Function to create a bot message with a speaker button
+// Function to create a bot message with a speaker button
+// Initialize the Speech Synthesis API
+const synth = window.speechSynthesis;
+
+// Function to convert text to speech
+function speak(text) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-US'; // You can set the language code here
+    synth.speak(utterance);
+}
+
+// Function to create a bot message with a speaker button
+function createBotMessage(text) {
+    const messagesContainer = document.querySelector('.messages ul');
+
+    // Create bot message list item
+    const messageElement = document.createElement('li');
+    messageElement.classList.add('sent'); // Set the class for sent messages
+
+    // Create the bot image element
+    const botImage = document.createElement('img');
+    botImage.src = "https://miro.medium.com/max/327/1*paQ7E6f2VyTKXHpR-aViFg.png"; // Image URL
+    botImage.alt = "Bot Image"; // Alt text for accessibility
+
+    // Bot message text
+    const messageText = document.createElement('p');
+    messageText.innerText = text;
+
+    // Speaker button
+    const speakerButton = document.createElement('button');
+    speakerButton.classList.add('speaker-btn');
+    speakerButton.innerHTML = `<i class="fas fa-volume-up"></i>`; // Using Font Awesome speaker icon
+    speakerButton.onclick = function() {
+        speak(text); // Call the speak function with the text
+    };
+
+    // Append image, message text, and button to the message element
+    messageElement.appendChild(botImage);
+    messageElement.appendChild(messageText);
+    messageElement.appendChild(speakerButton);
+
+    // Append message element to the container
+    messagesContainer.appendChild(messageElement);
+
+    // Scroll to the bottom of the messages container
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+// Example function to simulate a bot responding
+function botRespond(text) {
+    createBotMessage(text); // Automatically includes speaker button and image
+}
+
+
+
+
 
 </script>
+
 </body></html>

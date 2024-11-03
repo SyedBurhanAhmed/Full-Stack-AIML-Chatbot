@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Burhan's Bot</title>
-    <link rel = 'icon' type ='image/x-icon' href = 'https://miro.medium.com/v2/resize:fit:327/1*paQ7E6f2VyTKXHpR-aViFg.png'></link>
+    <link rel='icon' type='image/x-icon' href='https://miro.medium.com/v2/resize:fit:327/1*paQ7E6f2VyTKXHpR-aViFg.png'></link>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css">
     <style>
         body {
@@ -17,127 +17,126 @@
             color: #5e2f62;
             transform: scale(0.75); /* Scale the body content to 75% */
             transform-origin: center; /* Keep the content centered when scaled */
-    }
+        }
 
-    .login-box {
-        width: 400px;
-        padding: 40px;
-        background: #fff;
-        text-align: center;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+        .login-box {
+            width: 400px;
+            padding: 40px;
+            background: #fff;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-    .login-box img {
-        width: 100px;
-        height: auto;
-        margin-bottom: 20px;
-    }
+            .login-box img {
+                width: 100px;
+                height: auto;
+                margin-bottom: 20px;
+            }
 
-    .login-box input[type="email"],
-    .login-box input[type="password"],
-    .login-box input[type="text"],
-    .login-box button {
-        width: 100%;
-        padding: 15px;
-        margin: 10px 0;
-        font-size: large;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        background: #f9f9f9;
-        box-sizing: border-box;
-    }
+            .login-box input[type="email"],
+            .login-box input[type="password"],
+            .login-box input[type="text"],
+            .login-box button {
+                width: 100%;
+                padding: 15px;
+                margin: 10px 0;
+                font-size: large;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background: #f9f9f9;
+                box-sizing: border-box;
+            }
 
-    .login-box input[type="email"]:focus,
-    .login-box input[type="password"]:focus
-    .login-box input[type="text"]:focus {
-        border-color: #6c1f55;
-        box-shadow: 0 0 5px rgba(150, 79, 162, 0.5);
-        outline: none;
-    }
+                .login-box input[type="email"]:focus,
+                .login-box input[type="password"]:focus
+                .login-box input[type="text"]:focus {
+                    border-color: #6c1f55;
+                    box-shadow: 0 0 5px rgba(150, 79, 162, 0.5);
+                    outline: none;
+                }
 
-    .login-box button {
-        background: #5e2f62;
-        color: #fff;
-        border: none;
-        cursor: pointer;
-    }
+            .login-box button {
+                background: #5e2f62;
+                color: #fff;
+                border: none;
+                cursor: pointer;
+            }
 
-    .login-box button:hover {
-        background: #6c1f55;
-    }
+                .login-box button:hover {
+                    background: #6c1f55;
+                }
 
-    .login-box a {
-        display: block;
-        margin-top: 15px;
-        color: #964FA2;
-        text-decoration: none;
-    }
+            .login-box a {
+                display: block;
+                margin-top: 15px;
+                color: #964FA2;
+                text-decoration: none;
+            }
 
-    .login-box p {
-        display: inline-block;
-        color: black;
-        margin-right: 5px; /* Add space between the text and the link */
-    }
+            .login-box p {
+                display: inline-block;
+                color: black;
+                margin-right: 5px; /* Add space between the text and the link */
+            }
 
-    .login-box .signup-link {
-        display: inline-block;
-        color: #5e2f62;
-    }
+            .login-box .signup-link {
+                display: inline-block;
+                color: #5e2f62;
+            }
 
-    /* Style for the Show Password checkbox */
-    .show-password-wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        margin: 10px 0;
-    }
+        /* Style for the Show Password checkbox */
+        .show-password-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin: 10px 0;
+        }
 
-    .show-password-wrapper input[type="checkbox"] {
-        transform: scale(1.5); /* Increase the size of the checkbox */
-        margin-right: 10px;
-    }
+            .show-password-wrapper input[type="checkbox"] {
+                transform: scale(1.5); /* Increase the size of the checkbox */
+                margin-right: 10px;
+            }
 
-    .show-password-wrapper label {
-        font-size: large; /* Increase the font size of the label */
-        color: #5e2f62; /* Match the color with the rest of the form */
-    }
-    /* General styling for messages */
-.message {
-    font-size: 1em;
-    padding: 10px;
-    border-radius: 5px;
-    margin: 10px 0;
-    text-align: center;
-    width: 100%;
-    box-sizing: border-box;
-}
+            .show-password-wrapper label {
+                font-size: large; /* Increase the font size of the label */
+                color: #5e2f62; /* Match the color with the rest of the form */
+            }
+        /* General styling for messages */
+        .message {
+            font-size: 1em;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
 
-/* Error message styling */
-.error {
-    background-color: #f8d7da; /* Light red background */
-    color: #721c24; /* Dark red text */
-    border: 1px solid #f5c6cb; /* Light red border */
-}
+        /* Error message styling */
+        .error {
+            background-color: #f8d7da; /* Light red background */
+            color: #721c24; /* Dark red text */
+            border: 1px solid #f5c6cb; /* Light red border */
+        }
 
-/* Success message styling */
-.notification {
-    background-color: #d4edda; /* Light green background */
-    color: #155724; /* Dark green text */
-    border: 1px solid #c3e6cb; /* Light green border */
-}
+        /* Success message styling */
+        .notification {
+            background-color: #d4edda; /* Light green background */
+            color: #155724; /* Dark green text */
+            border: 1px solid #c3e6cb; /* Light green border */
+        }
 
-/* Ensure error and notification messages look consistent */
-.error, .notification {
-    font-size: 1em; /* Consistent font size */
-    padding: 10px; /* Space inside the box */
-    border-radius: 5px; /* Rounded corners */
-    margin: 10px 0; /* Space around the box */
-    text-align: center; /* Center the text */
-    width: 100%; /* Full width */
-    box-sizing: border-box; /* Include padding and border in element's total width and height */
-}
-
+        /* Ensure error and notification messages look consistent */
+        .error, .notification {
+            font-size: 1em; /* Consistent font size */
+            padding: 10px; /* Space inside the box */
+            border-radius: 5px; /* Rounded corners */
+            margin: 10px 0; /* Space around the box */
+            text-align: center; /* Center the text */
+            width: 100%; /* Full width */
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
+        }
     </style>
 </head>
 <body>

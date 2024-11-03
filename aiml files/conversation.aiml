@@ -21,6 +21,22 @@
         </template>
     </category>
 
+
+    <category>
+        <pattern>سالام</pattern>
+        <template>
+        <random>
+            <li>Heeloooo!</li>
+            <li> Hi user! </li>
+            <li>Hello human, what is your name?</li>
+                <li>Greetings :). Can you introduce yourself?</li>
+                <li>Hey! wassup?</li>
+                <li>Hello... Nice to meet you. What is your name?</li>
+                <li>Hey! Glad to to talk with you. What's your name?</li>
+        </random>
+        </template>
+        </category>
+
     <category>
         <pattern>HEY</pattern>
         <template>
