@@ -1,18 +1,20 @@
-Here's a GitHub README template for your AIML chatbot project:
-
----
-
 # AIML Chatbot 🚀
 
-Welcome to the AIML Chatbot project! This is a full-stack chatbot built using Python, the `python-aiml` library, and the Flask framework. Initially inspired by Pema Gurung's AIML chatbot and kuki.ai (a multiple Loebner Prize winner), this chatbot is designed to explore the capabilities of rule-based chatbots. Unlike AI-driven bots that evolve through machine learning or NLP, this chatbot is entirely scripted, making it ideal for specific use cases.
+Welcome to the AIML Chatbot project! This is a full-stack chatbot built using Python, the `python-aiml` library, and the Flask framework. Initially inspired by Pema Gurung's AIML chatbot and kuki.ai (a multiple Loebner Prize winner), this chatbot explores the capabilities of rule-based chatbots. Unlike AI-driven bots that evolve through machine learning or NLP, this chatbot is entirely scripted, making it ideal for specific use cases.
 
 ## Features 🌟
 
 - **Rule-Based Responses**: Predefined responses for every potential input, making it perfect for domain-specific applications.
 - **NLP Integration**: Added NLP capabilities using WordNet to answer "what" and "who" questions.
-- **Sentiment Analysis**: The chatbot analyzes the user's mood. If it detects a negative sentiment, it will respond with a joke.
+- **Sentiment Analysis**: The chatbot analyzes the user's mood; if it detects a negative sentiment, it responds with a joke.
 - **Customizable**: Implemented on the web using the Flask framework, with customizable HTML based on Pema Gurung's project.
-- **Future Enhancements**: Plans to integrate a graph database (Neo4j) for more complex interactions and implement backend functionalities for login and signup pages.
+- **Speech Recognition**: Allows users to interact with the chatbot using voice commands.
+- **Text-to-Speech**: Converts chatbot responses into spoken words for an enhanced user experience.
+- **User Authentication**: Supports login and signup functionality for personalized interactions.
+- **Chat History Management**: Saves and retrieves past interactions, allowing users to revisit previous conversations.
+- **Neo4j Integration**: Utilizes Neo4j as a graph database for managing user preferences and relationships.
+- **Dynamic Responses**: Generates contextually relevant responses based on user queries and history.
+- **Future Enhancements**: Plans to implement backend functionalities for login and signup pages and integrate a graph database (Neo4j) for more complex interactions.
 
 ## Use Cases 🎯
 
@@ -58,6 +60,7 @@ Once the application is running, you can interact with the chatbot through the w
 - Answer predefined questions.
 - Respond to "what" and "who" questions using WordNet.
 - Tell a joke if it detects a negative sentiment from the user.
+- Engage users through voice interactions and deliver responses audibly.
 
 ## Future Plans 🔮
 
@@ -76,8 +79,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Acknowledgments 🙏
 
 - Inspired by [Pema Gurung's AIML chatbot](https://github.com/pemagurung/AIML-Chatbot).
-- kuki.ai for being a benchmark in rule-based chatbots.
-
----
-
-This README provides an overview of your project, installation instructions, usage details, future plans, and more. You can customize it further to fit your specific needs!
+- Thanks to kuki.ai for being a benchmark in rule-based chatbots.
